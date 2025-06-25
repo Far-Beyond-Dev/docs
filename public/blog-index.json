@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "about",
+    "title": "About Horizon",
+    "image": null,
+    "tags": [],
+    "stability": "stable",
+    "excerpt": "\n# Getting started with Horizon\n\n![horizon-server-high-resolution-logo-transparent](https://github.com/Far-Beyond-Dev/Horizon-Community-Edition/raw/ma...",
+    "readingTime": 4,
+    "fileName": "about.md"
+  },
+  {
+    "slug": "dev-intro",
+    "title": "Getting started with Development",
+    "image": null,
+    "excerpt": "\n# Developer Documentation - Overview\n\n## 1. Overview\n\nThe Horizon Game Server is a sophisticated distributed system designed to manage communication ...",
+    "tags": [
+      "basics",
+      "contributor",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "readingTime": 16,
+    "fileName": "dev-intro.md"
+  },
+  {
+    "slug": "horizon-link",
+    "title": "Horizon Link Plugins",
+    "image": "https://openapi-generator.tech/img/mono-logo.svg",
+    "tags": [
+      "basics",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "excerpt": "\r\n# Horizon Link - An overview\r\n<br></br>\r\n\r\n## 1. What is a Horizon link plugin? \r\nHorizon link plugins are a special class of Horizon plugin designe...",
+    "readingTime": 2,
+    "fileName": "horizon-link.md"
+  },
+  {
+    "slug": "plugin-api",
+    "title": "Plugin Development Guide",
+    "image": null,
+    "excerpt": "\nThis guide walks through building plugins for the Horizon game server, covering the event system, plugin architecture, and practical examples.\n\n## Ta...",
+    "tags": [
+      "basics",
+      "tutorial",
+      "Plugins"
+    ],
+    "stability": "stable",
+    "readingTime": 9,
+    "fileName": "plugin-api.md"
+  }
+]
