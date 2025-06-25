@@ -26,8 +26,8 @@ if (typeof window !== 'undefined') {
 
 
 const metadata = {
-  title: 'Blog - Tristan Poland',
-  description: 'A blog about game and web development, backend programming, hardware, security, privacy, and technology.',
+  title: 'Docs - Horizon - Far Beyond',
+  description: "Horizon game server documentation from Far Beyond",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
