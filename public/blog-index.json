@@ -10,18 +10,31 @@
     "fileName": "about.md"
   },
   {
-    "slug": "dev-intro",
+    "slug": "core-dev-intro",
     "title": "Getting started with Development",
     "image": null,
-    "excerpt": "\n# Developer Documentation - Overview\n\n## 1. Overview\n\nThe Horizon Game Server is a sophisticated distributed system designed to manage communication ...",
+    "excerpt": "\n# Horizon Core Server Development Guide\n\n🛠️ **Your comprehensive guide to contributing to the Horizon game server internals.**\n\nWelcome to Horizon c...",
     "tags": [
       "basics",
       "contributor",
       "tutorial"
     ],
     "stability": "stable",
-    "readingTime": 16,
-    "fileName": "dev-intro.md"
+    "readingTime": 14,
+    "fileName": "core-dev-intro.md"
+  },
+  {
+    "slug": "getting-started",
+    "title": "Getting started with Horizon",
+    "image": null,
+    "excerpt": "\r\n# Getting Started with Horizon Game Server\r\n\r\n🚀 **A comprehensive guide to setting up and running your first Horizon game server with plugins.**\r\n\r...",
+    "tags": [
+      "basics",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "readingTime": 18,
+    "fileName": "getting-started.md"
   },
   {
     "slug": "horizon-link",
