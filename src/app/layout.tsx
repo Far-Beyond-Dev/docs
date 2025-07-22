@@ -74,21 +74,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Original Header */}
           <Header />
           
-          <div className="flex flex-1">
-            
-            {/* Main content area */}
-            <div className="flex-1 flex flex-col lg:ml-0">
-              {/* Secondary Navigation */}
-              
-              <main className="flex-1 overflow-y-auto">
-                <div className="container mx-auto px-4 py-8 max-w-6xl">
-                  {children}
-                </div>
-              </main>
-              
-              <Footer />
+          <main className="flex-1 overflow-y-auto scroll-smooth">
+            <div className="container mx-auto px-6 py-8 max-w-7xl relative">
+              {children}
             </div>
-          </div>
+            <Footer />
+          </main>
         </div>
       </body>
     </html>

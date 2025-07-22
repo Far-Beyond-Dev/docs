@@ -63,9 +63,9 @@ export default async function DocPage({ params }) {
       (doc.content ? Math.ceil(doc.content.split(/\s+/).length / 200) : 1);
     
     return (
-      <div className="pr-64">
+      <div className="flex gap-8">
         {/* Main Content */}
-        <div className="max-w-4xl">
+        <div className="flex-1 max-w-4xl">
           <Breadcrumbs currentDoc={doc} />
           
           <div className="mb-8">
@@ -106,8 +106,11 @@ export default async function DocPage({ params }) {
           </div>
         </div>
 
-        {/* Fixed Table of Contents Sidebar */}
-        <TableOfContents content={doc.content} />
+        
+        {/* Table of Contents Sidebar */}
+        <div className="hidden lg:block lg:w-72 lg:flex-shrink-0">
+          <TableOfContents content={doc.content} />
+        </div>
       </div>
     );
   } catch (error) {

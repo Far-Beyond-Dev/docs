@@ -34,7 +34,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-sm bg-black/50 border-b border-neutral-800">
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-black/70 border-b border-neutral-800/50 transition-all duration-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
@@ -97,7 +97,7 @@ export const Header = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-lg">
+        <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-neutral-800/50">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <MobileNavLink href="community">Community</MobileNavLink>
             <MobileNavLink href="enterprise">Enterprise</MobileNavLink>
