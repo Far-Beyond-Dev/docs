@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "about",
+    "title": "About Horizon",
+    "image": null,
+    "tags": [],
+    "stability": "stable",
+    "excerpt": "A brief introduction to Horizon",
+    "readingTime": 4,
+    "fileName": "about.md",
+    "category": "General",
+    "order": 999
+  },
+  {
+    "slug": "core-dev-intro",
+    "title": "Getting started with Development",
+    "image": null,
+    "excerpt": "A starting point to learn about developing for Horizon",
+    "tags": [
+      "basics",
+      "contributor",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "readingTime": 14,
+    "fileName": "core-dev-intro.md",
+    "category": "General",
+    "order": 999
+  },
+  {
+    "slug": "getting-started",
+    "title": "Getting started with Horizon",
+    "image": null,
+    "excerpt": "A starting point to learn about using Horizon in your game",
+    "tags": [
+      "basics",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "readingTime": 18,
+    "fileName": "getting-started.md",
+    "category": "General",
+    "order": 999
+  },
+  {
+    "slug": "horizon-link",
+    "title": "Horizon Link Plugins",
+    "image": "https://openapi-generator.tech/img/mono-logo.svg",
+    "tags": [
+      "basics",
+      "tutorial"
+    ],
+    "stability": "stable",
+    "excerpt": "A brief introduction to Horizon's link protocol and plugins",
+    "readingTime": 2,
+    "fileName": "horizon-link.md",
+    "category": "General",
+    "order": 999
+  },
+  {
+    "slug": "plugin-api",
+    "title": "Plugin Development Guide",
+    "image": null,
+    "excerpt": "Learn how Horizon's plugin API works",
+    "tags": [
+      "basics",
+      "tutorial",
+      "Plugins"
+    ],
+    "stability": "stable",
+    "readingTime": 9,
+    "fileName": "plugin-api.md",
+    "category": "General",
+    "order": 999
+  }
+]

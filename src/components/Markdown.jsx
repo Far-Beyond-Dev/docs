@@ -249,6 +249,67 @@ useEffect(() => {
             rehypeKatex,
           ]}
           components={{
+            // Add IDs to headings for TOC functionality
+            h1: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h1 id={id} {...props}>{children}</h1>;
+            },
+            h2: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h2 id={id} {...props}>{children}</h2>;
+            },
+            h3: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h3 id={id} {...props}>{children}</h3>;
+            },
+            h4: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h4 id={id} {...props}>{children}</h4>;
+            },
+            h5: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h5 id={id} {...props}>{children}</h5>;
+            },
+            h6: ({ children, ...props }) => {
+              const text = React.Children.toArray(children).join('');
+              const id = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+              return <h6 id={id} {...props}>{children}</h6>;
+            },
             // Handle code blocks with syntax highlighting and Mermaid diagrams
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || '');

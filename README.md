@@ -1,94 +1,91 @@
-# Building Your Blog with Next.js: A Friendly Guide
+# Next.js Blog Framework
 
-Hey there! So you want to create a blog like mine using the Next.js framework? You've made a great choice! This guide will walk you through everything you need to know - from writing your first post to seeing your blog live on the internet. Don't worry if you're new to this; we've designed everything to be straightforward and beginner-friendly.
+A production-ready, modern blog framework built with Next.js 15, React 19, and Tailwind CSS 4. Features markdown support, dark mode, search functionality, and automated deployment.
 
-## What Makes This Blog Framework Special
+## Features
 
-Before diving into the technical stuff, let's talk about what makes this framework worth your time:
+- ✨ **Modern Stack**: Next.js 15 with App Router, React 19, TypeScript
+- 📝 **Markdown Support**: Write posts in markdown with frontmatter
+- 🎨 **Responsive Design**: Mobile-first design with Tailwind CSS 4
+- 🌙 **Dark Mode**: Built-in theme switching
+- 🔍 **Full-text Search**: Client-side search functionality
+- 🏷️ **Tag System**: Organize posts with tags and filtering
+- ⏱️ **Reading Time**: Automatic reading time estimation
+- 🖼️ **Image Support**: Optimized image handling
+- 📊 **Diagrams**: Mermaid diagram support
+- 🧮 **Math**: LaTeX equation rendering with KaTeX
+- 🚀 **Fast Performance**: Static site generation with ISR
+- 📱 **SEO Optimized**: Meta tags, OpenGraph, structured data
+- 🔄 **Auto Deployment**: GitHub Actions CI/CD pipeline
 
-- **Write in Markdown** - Just focus on your content, no HTML expertise needed
-- **Beautiful on All Devices** - Thanks to Tailwind CSS, your blog will look great on phones, tablets, and desktops
-- **Dark Mode Built-in** - Easy on the eyes, automatically adjusts to reader preferences
-- **Pretty Code Blocks** - If you're sharing code, it'll look professional with syntax highlighting
-- **Smart Search Feature** - Readers can easily find what they're looking for
-- **Organized with Tags** - Group your posts by topic for better navigation
-- **Reading Time** - Automatically shows readers how long each post takes to read
-- **SEO Ready** - Google and other search engines will love your blog
-- **One-Click Deployment** - Publish to GitHub Pages with zero hassle
+## Quick Start
 
-## Getting Started: The Basics
+### Prerequisites
 
-If you're ready to jump in, here's what you'll need:
+- Node.js 18+ 
+- npm or yarn package manager
+- Git
 
-- Node.js installed on your computer (version 14 or newer)
-- A GitHub account (for publishing your blog)
-- Basic familiarity with the command line (don't worry, we'll keep it simple!)
+### Installation
 
-### Setting Up Your Blog in 3 Easy Steps
-
-1. First, grab a copy of this repository:
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/tristanpoland/Blog-Pages my-blog
-   cd my-blog
+   git clone https://github.com/tristanpoland/Blog-Pages.git
+   cd Blog-Pages
    ```
 
-2. Install everything your blog needs to run:
+2. **Install dependencies**
    ```bash
    npm install
-   # or if you prefer yarn
-   yarn install
    ```
 
-3. Start up your blog on your computer:
+3. **Start development server**
    ```bash
    npm run dev
-   # or 
-   yarn dev
    ```
 
-That's it! Visit `http://localhost:3000` in your browser, and you should see your blog running locally.
+4. **Open your browser**
+   Visit `http://localhost:3000` to see your blog
 
-## Understanding Your Blog's Structure
-
-Let's take a quick tour of how everything is organized:
+## Project Structure
 
 ```
-├── app/                  # This is where all your pages live
-├── components/           # Reusable parts like headers and footers
-├── public/               # Images and your blog posts go here
-│   └── blogs/            # Your markdown files live here
-├── utils/                # Helper functions that make everything work
-├── .github/workflows/    # Handles automatic publishing
+├── src/
+│   ├── app/              # Next.js App Router pages
+│   ├── components/       # Reusable React components
+│   └── utils/            # Utility functions
+├── public/
+│   └── blogs/            # Markdown blog posts
+├── scripts/              # Build scripts
+├── .github/workflows/    # CI/CD automation
+└── package.json          # Dependencies and scripts
 ```
 
-Don't worry about memorizing this - you'll get familiar with it as you go!
+## Creating Content
 
-## Writing Your First Blog Post
+### Blog Posts
 
-This is the fun part! Creating content for your blog is super simple:
-
-1. Create a new markdown file in the `public/blogs` folder, like `my-first-post.md`
-
-2. At the top of your file, add some details about your post:
+Create markdown files in `public/blogs/` with frontmatter:
 
 ```markdown
 ---
-title: "My Amazing First Blog Post"
-date: "2025-04-16"
-tags: ["getting-started", "blogging"]
-excerpt: "Join me as I explore the world of blogging with Next.js!"
+title: "Your Post Title"
+date: "2025-07-22"
+tags: ["nextjs", "blog"]
+excerpt: "Brief description of your post"
 ---
 
-Hello world! This is my first blog post using this awesome framework...
+# Your Content Here
+
+Write your blog post content using standard markdown syntax.
 ```
 
-3. Write your post content using Markdown. You can add:
-   - **Bold text** with `**asterisks**`
-   - *Italic text* with `*single asterisks*`
-   - [Links](https://example.com) with `[text](url)`
-   - Lists, quotes, headings, and more!
+### Frontmatter Fields
 
-4. Save your file, and it'll automatically appear on your blog's homepage
+- `title`: Post title (required)
+- `date`: Publication date in YYYY-MM-DD format (required)
+- `tags`: Array of tags for categorization
+- `excerpt`: Brief description for previews
 
 ### Adding Images to Your Posts
 

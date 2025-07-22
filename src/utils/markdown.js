@@ -3,32 +3,32 @@ import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 
-const blogsDirectory = path.join(process.cwd(), 'public/blogs');
+const docsDirectory = path.join(process.cwd(), 'public/docs');
 
 /**
- * Gets all blog post slugs from the blogs directory
+ * Gets all documentation slugs from the docs directory
  * @returns {Promise<string[]>} Array of slugs
  */
-export async function getBlogSlugs() {
+export async function getDocSlugs() {
   try {
-    const files = await fs.readdir(blogsDirectory);
+    const files = await fs.readdir(docsDirectory);
     return files
       .filter(file => file.endsWith('.md'))
       .map(file => file.replace(/\.md$/, ''));
   } catch (error) {
-    console.error('Error getting blog slugs:', error);
+    console.error('Error getting doc slugs:', error);
     return [];
   }
 }
 
 /**
- * Gets a blog post by its slug
- * @param {string} slug - The blog post slug
- * @returns {Promise<Object|null>} Blog post data or null if not found
+ * Gets a documentation by its slug
+ * @param {string} slug - The documentation slug
+ * @returns {Promise<Object|null>} Documentation data or null if not found
  */
-export async function getBlogBySlug(slug) {
+export async function getDocBySlug(slug) {
   try {
-    const fullPath = path.join(blogsDirectory, `${slug}.md`);
+    const fullPath = path.join(docsDirectory, `${slug}.md`);
     
     // Read the file
     const fileContents = await fs.readFile(fullPath, 'utf8');
@@ -65,46 +65,53 @@ export async function getBlogBySlug(slug) {
       tags: data.tags || [],
       excerpt: postExcerpt,
       readingTime,
+      category: data.category || 'General',
+      order: data.order || 999,
       ...data, // Include all frontmatter data
     };
   } catch (error) {
-    console.error(`Error getting blog for slug ${slug}:`, error);
+    console.error(`Error getting doc for slug ${slug}:`, error);
     return null;
   }
 }
 
 /**
- * Gets all blog posts
- * @returns {Promise<Object[]>} Array of blog posts
+ * Gets all documentation
+ * @returns {Promise<Object[]>} Array of documentation
  */
-export async function getAllBlogs() {
+export async function getAllDocs() {
   try {
-    const slugs = await getBlogSlugs();
-    const blogs = await Promise.all(slugs.map(slug => getBlogBySlug(slug)));
+    const slugs = await getDocSlugs();
+    const docs = await Promise.all(slugs.map(slug => getDocBySlug(slug)));
     
     // Filter out any null values (failed loads)
-    const validBlogs = blogs.filter(blog => blog !== null);
+    const validDocs = docs.filter(doc => doc !== null);
     
-    // Sort by date (newest first)
-    return validBlogs.sort((a, b) => (new Date(b.date) > new Date(a.date) ? 1 : -1));
+    // Sort by category and order
+    return validDocs.sort((a, b) => {
+      if (a.category !== b.category) {
+        return a.category.localeCompare(b.category);
+      }
+      return a.order - b.order;
+    });
   } catch (error) {
-    console.error('Error getting all blogs:', error);
+    console.error('Error getting all docs:', error);
     return [];
   }
 }
 
 /**
- * Gets all tags from all blog posts
+ * Gets all tags from all documentation
  * @returns {Promise<string[]>} Array of unique tags
  */
 export async function getAllTags() {
   try {
-    const blogs = await getAllBlogs();
+    const docs = await getAllDocs();
     const tags = new Set();
     
-    blogs.forEach(blog => {
-      if (blog.tags) {
-        blog.tags.forEach(tag => tags.add(tag));
+    docs.forEach(doc => {
+      if (doc.tags) {
+        doc.tags.forEach(tag => tags.add(tag));
       }
     });
     
@@ -116,16 +123,38 @@ export async function getAllTags() {
 }
 
 /**
- * Gets blog posts by tag
+ * Gets documentation by tag
  * @param {string} tag - The tag to filter by
- * @returns {Promise<Object[]>} Array of blog posts with the specified tag
+ * @returns {Promise<Object[]>} Array of documentation with the specified tag
  */
-export async function getBlogsByTag(tag) {
+export async function getDocsByTag(tag) {
   try {
-    const blogs = await getAllBlogs();
-    return blogs.filter(blog => blog.tags && blog.tags.includes(tag));
+    const docs = await getAllDocs();
+    return docs.filter(doc => doc.tags && doc.tags.includes(tag));
   } catch (error) {
-    console.error(`Error getting blogs by tag ${tag}:`, error);
+    console.error(`Error getting docs by tag ${tag}:`, error);
+    return [];
+  }
+}
+
+/**
+ * Gets all categories from all documentation
+ * @returns {Promise<string[]>} Array of unique categories
+ */
+export async function getAllCategories() {
+  try {
+    const docs = await getAllDocs();
+    const categories = new Set();
+    
+    docs.forEach(doc => {
+      if (doc.category) {
+        categories.add(doc.category);
+      }
+    });
+    
+    return Array.from(categories);
+  } catch (error) {
+    console.error('Error getting all categories:', error);
     return [];
   }
 }

@@ -2,6 +2,7 @@
 
 import './globals.css';
 import Header from '../components/Header';
+import DocsNavBar from '../components/DocsNavBar';
 import Footer from '../components/Footer';
 import { Inter } from 'next/font/google';
 import { useEffect, useState } from 'react';
@@ -23,8 +24,6 @@ if (typeof window !== 'undefined') {
   });
 }
 
-
-
 const metadata = {
   title: 'Docs - Horizon - Far Beyond',
   description: "Horizon game server documentation from Far Beyond",
@@ -32,11 +31,20 @@ const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Detect user/system theme
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Initialize theme based on localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
+    
     setDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
 
     mermaid.initialize({
       startOnLoad: false,
@@ -44,8 +52,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     });
   }, []);
 
+  const handleMenuToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const handleSidebarClose = () => {
+    setSidebarOpen(false);
+  };
+
   return (
-    <html lang="en">
+    <html lang="en" className={darkMode ? 'dark' : ''}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,14 +69,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>{metadata.title}</title>
       </head>
 
-      <body
-        className={`${inter.className} min-h-screen flex flex-col bg-gray-100 dark:bg-black text-gray-900 dark:text-gray-100`}
-      >
-        <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          {children}
-        </main>
-        <Footer />
+      <body className={`${inter.className} min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
+        <div className="flex flex-col h-screen">
+          {/* Original Header */}
+          <Header />
+          
+          <div className="flex flex-1">
+            
+            {/* Main content area */}
+            <div className="flex-1 flex flex-col lg:ml-0">
+              {/* Secondary Navigation */}
+              
+              <main className="flex-1 overflow-y-auto">
+                <div className="container mx-auto px-4 py-8 max-w-6xl">
+                  {children}
+                </div>
+              </main>
+              
+              <Footer />
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );
