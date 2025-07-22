@@ -113,7 +113,7 @@ export default function TableOfContents({ content }) {
   }
 
   return (
-    <div className="fixed top-16 right-0 w-64 h-[calc(100vh-4rem)] bg-black border-l border-gray-800 z-30">
+    <div className="fixed top-16 right-0 w-64 h-[calc(100vh-4rem)] border-l border-gray-800 z-30">
       <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
         <div className="p-4">
           <div className="text-sm font-semibold text-white mb-4">
