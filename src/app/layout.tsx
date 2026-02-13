@@ -34,21 +34,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Initialize theme based on localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
-    
-    setDarkMode(isDark);
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Always use dark mode
+    setDarkMode(true);
+    document.documentElement.classList.add('dark');
 
     mermaid.initialize({
       startOnLoad: false,
-      theme: isDark ? 'dark' : 'default',
+      theme: 'dark',
     });
   }, []);
 
